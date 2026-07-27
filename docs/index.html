@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Path of Building for Mac — Patch 3.29 fix</title>
+<meta name="description" content="An unofficial Path of Building build for Mac, fixed for Path of Exile Patch 3.29. Download the DMG and get building.">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<style>
+  :root {
+    --bg: #15120f;
+    --bg-panel: #1e1a15;
+    --border: #35302a;
+    --text: #e9e2d6;
+    --text-dim: #a89e8f;
+    --accent: #c9974a;
+    --accent-bright: #e8b464;
+    --good: #7fae6a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  a { color: var(--accent-bright); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  header.hero {
+    padding: 64px 0 40px;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+  }
+  header.hero img { width: 96px; height: 96px; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,.5); }
+  header.hero h1 { font-size: 30px; margin: 20px 0 8px; }
+  header.hero p.tagline { color: var(--text-dim); font-size: 18px; margin: 0 0 28px; }
+
+  .btn {
+    display: inline-block;
+    background: linear-gradient(180deg, var(--accent-bright), var(--accent));
+    color: #221a0f;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 16px 32px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(201,151,74,.35);
+  }
+  .btn:hover { text-decoration: none; filter: brightness(1.06); }
+  .btn small { display: block; font-weight: 500; font-size: 13px; opacity: .75; margin-top: 2px; }
+  .sub-link { margin-top: 14px; font-size: 14px; color: var(--text-dim); }
+
+  section { padding: 40px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+  h2 { font-size: 21px; color: var(--accent-bright); margin: 0 0 16px; }
+
+  .fix-banner {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--good);
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 15px;
+    color: var(--text-dim);
+  }
+  .fix-banner strong { color: var(--text); }
+
+  ol.steps { padding-left: 0; margin: 0; list-style: none; counter-reset: step; }
+  ol.steps li {
+    counter-increment: step;
+    position: relative;
+    padding: 4px 0 20px 44px;
+    color: var(--text-dim);
+  }
+  ol.steps li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0; top: 2px;
+    width: 28px; height: 28px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    color: var(--accent-bright);
+    font-weight: 700;
+    font-size: 14px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  ol.steps li strong { color: var(--text); }
+  ol.steps img {
+    display: block;
+    margin-top: 10px;
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  .req-list { color: var(--text-dim); padding-left: 20px; }
+  .req-list li { margin-bottom: 6px; }
+  .req-list strong { color: var(--text); }
+
+  footer { padding: 32px 0 64px; text-align: center; color: var(--text-dim); font-size: 14px; }
+  footer a { color: var(--text-dim); }
+  footer .links { margin-top: 8px; }
+  footer .links a { margin: 0 8px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <img src="assets/app-icon-180.png" alt="Path of Building icon">
+    <h1>Path of Building for Mac</h1>
+    <p class="tagline">The build planner everyone uses — now working again on Patch 3.29.</p>
+    <a class="btn" href="https://github.com/dcgancan/PathOfBuilding-Mac/releases/latest/download/PathOfBuilding-Mac.dmg">
+      Download for Mac
+      <small>Free · Apple Silicon · macOS 11+</small>
+    </a>
+    <div class="sub-link">
+      <a href="https://github.com/dcgancan/PathOfBuilding-Mac/releases/latest">See all releases on GitHub →</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section>
+    <div class="fix-banner">
+      <strong>Why this exists:</strong> after Patch 3.29, the official Mac port stopped opening
+      (a "missing module" error), and on some external-monitor setups the window drew squashed
+      into the corner. This build fixes both. The fix is already
+      <a href="https://github.com/stevschmid/PathOfBuilding-Mac/pull/3">submitted to the official project</a> —
+      once it's merged, this page will point you back there.
+    </div>
+  </section>
+
+  <section>
+    <h2>Install it</h2>
+    <ol class="steps">
+      <li><strong>Download</strong> the DMG using the button above.</li>
+      <li><strong>Open</strong> the downloaded file, then drag Path of Building into your Applications folder.</li>
+      <li><strong>Open</strong> Applications and double-click Path of Building.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>First time opening it</h2>
+    <p style="color:var(--text-dim)">
+      macOS will block the very first launch, because this build isn't signed with a
+      paid Apple developer certificate. This is normal for small free Mac tools and only
+      takes a few extra clicks, once:
+    </p>
+    <ol class="steps">
+      <li>
+        <strong>Double-click the app.</strong> You'll get a dialog saying macOS can't verify
+        the developer. Click <strong>Done</strong>.
+        <img src="assets/gatekeeper-1-blocked.png" alt="macOS Gatekeeper warning dialog" loading="lazy">
+      </li>
+      <li>
+        <strong>Open System Settings → Privacy &amp; Security.</strong> Scroll down — you'll see
+        a message that Path of Building was blocked. Click <strong>Open Anyway</strong>.
+        <img src="assets/gatekeeper-2-settings.png" alt="Privacy and Security settings Open Anyway button" loading="lazy">
+      </li>
+      <li>
+        <strong>Confirm.</strong> Click <strong>Open Anyway</strong> again in the popup (you may
+        need your Mac password). From now on it opens normally, like any other app.
+        <img src="assets/gatekeeper-3-confirm.png" alt="Final confirmation dialog" loading="lazy">
+      </li>
+    </ol>
+    <p style="color:var(--text-dim)">
+      Shortcut: right-click (or Control-click) the app in Applications and choose
+      <strong>Open</strong> — same result, one dialog instead of three steps.
+    </p>
+  </section>
+
+  <section>
+    <h2>Good to know</h2>
+    <ul class="req-list">
+      <li><strong>Requires an Apple Silicon Mac</strong> (M1 or newer). Intel Macs aren't supported.</li>
+      <li><strong>Same Path of Building your Windows friends use</strong> — same calculations, same
+        passive tree, same PoE login for trade/imports. Nothing about your account is touched.</li>
+      <li><strong>Open source.</strong> Every line of what gets built into this DMG is public on
+        <a href="https://github.com/dcgancan/PathOfBuilding-Mac">GitHub</a>.</li>
+      <li><strong>Game data (skills, passive tree, items) updates itself</strong> automatically inside
+        the app. You only need a new DMG from this page when the app itself changes.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Something wrong?</h2>
+    <p style="color:var(--text-dim)">
+      Mac-specific issue (won't open, crashes, graphics glitches)? 
+      <a href="https://github.com/dcgancan/PathOfBuilding-Mac/issues">Open an issue here</a>,
+      and mention your macOS version and chip (M1/M2/M3/M4).
+      A build/calculation looks wrong? That's the same on every platform — report it to the
+      <a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding/issues">main Path of Building project</a> instead.
+    </p>
+  </section>
+
+</div>
+
+<footer>
+  <div>Unofficial macOS build. Path of Building © the PathOfBuildingCommunity project. Path of Exile © Grinding Gear Games.</div>
+  <div class="links">
+    <a href="https://github.com/dcgancan/PathOfBuilding-Mac">GitHub repo</a>
+    ·
+    <a href="https://github.com/stevschmid/PathOfBuilding-Mac">Original Mac port</a>
+    ·
+    <a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding">Path of Building</a>
+  </div>
+</footer>
+
+</body>
+</html>
