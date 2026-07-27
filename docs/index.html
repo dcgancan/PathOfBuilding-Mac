@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Path of Building for Mac — Patch 3.29 fix</title>
-<meta name="description" content="An unofficial Path of Building build for Mac, fixed for Path of Exile Patch 3.29. Download the DMG and get building.">
+<title>Path of Building for Mac — updated for 3.29</title>
+<meta name="description" content="An updated, working build of Path of Building for Mac, patched for Path of Exile Patch 3.29.">
 <link rel="icon" type="image/png" href="assets/favicon-32.png">
 <style>
   :root {
@@ -111,7 +111,7 @@
   <div class="wrap">
     <img src="assets/app-icon-180.png" alt="Path of Building icon">
     <h1>Path of Building for Mac</h1>
-    <p class="tagline">The build planner everyone uses — now working again on Patch 3.29.</p>
+    <p class="tagline">Updated and working again on Patch 3.29.</p>
     <a class="btn" href="https://github.com/dcgancan/PathOfBuilding-Mac/releases/latest/download/PathOfBuilding-Mac.dmg">
       Download for Mac
       <small>Free · Apple Silicon · macOS 11+</small>
@@ -126,11 +126,12 @@
 
   <section>
     <div class="fix-banner">
-      <strong>Why this exists:</strong> after Patch 3.29, the official Mac port stopped opening
-      (a "missing module" error), and on some external-monitor setups the window drew squashed
-      into the corner. This build fixes both. The fix is already
-      <a href="https://github.com/stevschmid/PathOfBuilding-Mac/pull/3">submitted to the official project</a> —
-      once it's merged, this page will point you back there.
+      Wanted to get back into PoE with 3.29 and couldn't find a working, up-to-date PoB for
+      Mac. Tweaked <a href="https://github.com/stevschmid/PathOfBuilding-Mac">stevschmid's Mac port</a>
+      a bit to get it working again, so sharing it here in case it helps anyone else.
+      Already sent the fix
+      <a href="https://github.com/stevschmid/PathOfBuilding-Mac/pull/3">upstream</a> too, so
+      hopefully this won't be needed for long.
     </div>
   </section>
 
@@ -147,8 +148,7 @@
     <h2>First time opening it</h2>
     <p style="color:var(--text-dim)">
       macOS will block the very first launch, because this build isn't signed with a
-      paid Apple developer certificate. This is normal for small free Mac tools and only
-      takes a few extra clicks, once:
+      paid Apple developer certificate. Only takes a few extra clicks, once:
     </p>
     <ol class="steps">
       <li>
@@ -167,10 +167,6 @@
         <img src="assets/gatekeeper-3-confirm.png" alt="Final confirmation dialog" loading="lazy">
       </li>
     </ol>
-    <p style="color:var(--text-dim)">
-      Shortcut: right-click (or Control-click) the app in Applications and choose
-      <strong>Open</strong> — same result, one dialog instead of three steps.
-    </p>
   </section>
 
   <section>
@@ -178,21 +174,22 @@
     <ul class="req-list">
       <li><strong>Requires an Apple Silicon Mac</strong> (M1 or newer). Intel Macs aren't supported.</li>
       <li><strong>Same Path of Building your Windows friends use</strong> — same calculations, same
-        passive tree, same PoE login for trade/imports. Nothing about your account is touched.</li>
-      <li><strong>Open source.</strong> Every line of what gets built into this DMG is public on
+        passive tree, same PoE login for trade/imports.</li>
+      <li><strong>Open source.</strong> Everything that goes into this DMG is public on
         <a href="https://github.com/dcgancan/PathOfBuilding-Mac">GitHub</a>.</li>
-      <li><strong>Game data (skills, passive tree, items) updates itself</strong> automatically inside
-        the app. You only need a new DMG from this page when the app itself changes.</li>
+      <li><strong>Game data (skills, passive tree, items) updates itself</strong> inside the app.
+        You only need a new DMG from this page when the app itself changes.</li>
     </ul>
   </section>
 
   <section>
     <h2>Something wrong?</h2>
     <p style="color:var(--text-dim)">
-      Mac-specific issue (won't open, crashes, graphics glitches)? 
-      <a href="https://github.com/dcgancan/PathOfBuilding-Mac/issues">Open an issue here</a>,
-      and mention your macOS version and chip (M1/M2/M3/M4).
-      A build/calculation looks wrong? That's the same on every platform — report it to the
+      Something works fine on Windows but not here, or something's just off on Mac (won't open,
+      crashes, graphics glitches)?
+      <a href="https://github.com/dcgancan/PathOfBuilding-Mac/issues">Open an issue here</a> —
+      happy to take a look, just mention your macOS version and chip (M1/M2/M3/M4).
+      A build/calculation issue isn't Mac-specific, so that's better reported to the
       <a href="https://github.com/PathOfBuildingCommunity/PathOfBuilding/issues">main Path of Building project</a> instead.
     </p>
   </section>
@@ -200,7 +197,7 @@
 </div>
 
 <footer>
-  <div>Unofficial macOS build. Path of Building © the PathOfBuildingCommunity project. Path of Exile © Grinding Gear Games.</div>
+  <div>Unofficial macOS build, shared in case it's useful. Path of Building © the PathOfBuildingCommunity project. Path of Exile © Grinding Gear Games.</div>
   <div class="links">
     <a href="https://github.com/dcgancan/PathOfBuilding-Mac">GitHub repo</a>
     ·
