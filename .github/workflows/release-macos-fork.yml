@@ -1,0 +1,70 @@
+name: Release macOS (fork, unsigned)
+
+# This fork has no Apple Developer ID certificate, so it can't reuse
+# release-macos.yml (which signs with Steven Schmid's cert via secrets that
+# only exist in the upstream repo). This workflow ad-hoc signs instead — same
+# as build-macos.yml — and publishes the DMG straight to a GitHub Release
+# instead of a 90-day workflow artifact. Users get the Gatekeeper warning
+# described in the README; there is no notarization step.
+
+on:
+  push:
+    tags: ["fork-v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Path of Building
+    runs-on: macos-15
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout (with submodules)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Cache vcpkg archives
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/vcpkg/archives
+          key: vcpkg-${{ hashFiles('SimpleGraphic/vcpkg.json', 'SimpleGraphic/vcpkg-configuration.json', 'vcpkg-triplets/arm64-osx-pob.cmake') }}
+          restore-keys: vcpkg-
+
+      # Stop pkg-config from leaking Homebrew's openssl into the curl build.
+      - name: Isolate from Homebrew
+        run: echo "PKG_CONFIG_PATH=" >> $GITHUB_ENV
+
+      - name: Configure
+        run: >
+          cmake -B build -DCMAKE_BUILD_TYPE=Release
+          -DPOB_LUA_TREE="${{ github.workspace }}/PathOfBuilding"
+          -DPOB_BUNDLE_VERSION="2.66.2"
+          -DPOB_BUNDLE_NAME="Path of Building"
+          -DPOB_BUNDLE_ID="ch.spidy.PathOfBuildingMac"
+          -DPOB_APP_SUPPORT_DIR="PathOfBuildingMac"
+
+      - name: Build
+        run: cmake --build build
+
+      - name: Install
+        run: cmake --install build --prefix "${{ runner.temp }}/stage"
+
+      - name: Ad-hoc sign
+        run: macos/sign.sh "${{ runner.temp }}/stage/Path of Building.app"
+
+      - name: Verify signature
+        run: codesign --verify --deep --strict --verbose=2 "${{ runner.temp }}/stage/Path of Building.app"
+
+      - name: Package DMG
+        run: macos/make-dmg.sh "${{ runner.temp }}/stage/Path of Building.app" "${{ runner.temp }}/PathOfBuilding-Mac.dmg"
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ runner.temp }}/PathOfBuilding-Mac.dmg
+          fail_on_unmatched_files: true
+          generate_release_notes: true
+          make_latest: true
